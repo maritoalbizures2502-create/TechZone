@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Dinámica - Categorías</title>
+
+    <!-- Enlace a Bootstrap Icons para los iconos de categoría -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        /* PALETA DE COLORES:
+           - Azul Oscuro: #23406e (Encabezado/Texto principal)
+           - Azul Claro/Gris: #e3eaf2 (Fondo de página)
+           - Azul medio: #4a6fa5 (Tarjetas de producto/Fondo de imagen)
+           - Azul Llamativo: #007bff (Elemento seleccionado)
+           - Azul Muy Claro: #e6f3ff (Fondo de botón seleccionado)
+        */
+        html, body {
+            height: 100%; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #e3eaf2;
+        }
+        
+        /* Estilos de la Cabecera */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #23406e;
+            padding: 16px 32px;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(35,64,110,0.08);
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 20px;
+            padding: 5px 16px;
+            width: 320px;
+            color: #23406e;
+        }
+        .search-box input {
+            border: none;
+            outline: none;
+            flex: 1;
+            padding: 5px;
+            font-size: 1rem;
+            background: transparent;
+            color: #23406e;
+        }
+        .search-box input::placeholder {
+            color: #90caf9;
+        }
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            background: #34588c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            box-shadow: 0 1px 4px rgba(35,64,110,0.08);
+        }
+
+        /* Estilos del Contenedor Principal (Flexbox) */
+        .container {
+            display: flex;
+            padding: 32px;
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            /* Altura mínima para que el footer (si existiera) esté en el fondo */
+            min-height: calc(100vh - 102px); 
+            align-items: flex-start;
+        }
+        
+        /* ESTILOS DE LA BARRA LATERAL (TARJETA FLOTANTE DE CATEGORÍAS) */
+        .sidebar {
+            width: 280px; 
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+            flex-grow: 0; /* No se estira en altura */
+            padding: 24px 0; 
+        }
+        .sidebar h2 {
+            font-size: 1.5rem; 
+            font-weight: bold;
+            color: #23406e; 
+            padding: 0 24px; 
+            margin-bottom: 20px;
+            margin-top: 0;
+        }
+
+        /* Estilos para los enlaces (a) de categoría */
+        .sidebar a {
+            display: flex; 
+            align-items: center;
+            justify-content: space-between;
+            width: 100%; 
+            padding: 12px 24px; 
+            margin: 0; 
+            border: none;
+            background-color: transparent; 
+            color: #23406e;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1rem;
+            transition: background-color 0.2s, color 0.2s;
+            text-decoration: none;
+            box-sizing: border-box;
+            font-weight: 500;
+        }
+
+        /* Contenedor interno para Icono y Texto (para alineación) */
+        .category-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Estilo para el icono */
+        .category-content i {
+            font-size: 1.25rem;
+            color: #23406e; 
+        }
+        
+        /* Estilo para la flecha de navegación (derecha) */
+        .arrow-icon {
+            color: #90caf9; 
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+        
+        /* Efecto Hover: Fondo Gris/Claro */
+        .sidebar a:hover {
+            background-color: #f5f5f5; 
+            color: #23406e;
+        }
+
+        /* === ESTADO SELECCIONADO (AZUL LLAMATIVO) === */
+        .sidebar a.selected {
+            background-color: #e6f3ff; /* Fondo azul muy claro */
+            color: #23406e;
+            font-weight: bold;
+            
+            /* Borde izquierdo AZUL (#007bff) */
+            border-left: 5px solid #007bff; 
+            padding-left: 19px; 
+        }
+        
+        /* Icono y flecha de la categoría seleccionada en azul */
+        .sidebar a.selected .category-content i,
+        .sidebar a.selected .arrow-icon {
+            color: #007bff; 
+        }
+
+        
+        /* Estilos de productos */
+        .products {
+            display: flex;
+            flex: 1;
+            gap: 32px;
+            flex-wrap: wrap;
+            justify-content: flex-start; 
+            align-items: flex-start;
+            padding-left: 0;
+        }
+        .product-card {
+            background: #4a6fa5; 
+            border-radius: 16px;
+            padding: 20px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(35,64,110,0.07);
+            color: #fff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .product-card:hover {
+            box-shadow: 0 6px 18px rgba(35,64,110,0.25);
+            transform: translateY(-4px); 
+        }
+        .product-card img {
+            width: 210px;
+            height: 170px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            background: #e3eaf2; 
+            object-fit: cover;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .product-card p {
+            margin: 10px 0 5px;
+            font-size: 15px;
+            color: #fff;
+        }
+        .product-card span,
+        .product-card .price {
+            font-weight: bold;
+            color: #e3f2fd; 
+            font-size: 1.1rem;
+        }
+
+        /* Media Queries para responsividad */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                gap: 16px;
+                padding: 16px;
+                min-height: auto; 
+            }
+            .sidebar {
+                width: 100%;
+                margin-bottom: 16px;
+                padding: 18px; 
+                height: auto; 
+                flex-grow: 0;
+            }
+            .products {
+                gap: 16px;
+                justify-content: center; 
+            }
+            .product-card {
+                width: 100%;
+                max-width: 320px;
+            }
+            .product-card img {
+                width: 100%;
+                height: 160px;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display:flex; align-items:center; gap:15px;">
+            <!-- BOTÓN DE REGRESO: Redirige a cliente.html -->
+            <button onclick="window.location.href='cliente.html';" 
+                    style="background:none; border:none; font-size:24px; color:#fff; cursor:pointer;">
+                <i class="bi bi-arrow-left"></i>
+            </button>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Buscar Productos...">
+                <i class="bi bi-search"></i>
+            </div>
+        </div>
+        <div class="profile-icon">
+            <i class="bi bi-person-fill"></i>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <h2>Categorías</h2>
+            
+            <!-- ENLACES DE NAVEGACIÓN con categorías originales -->
+            <a href="#" class="category-link selected" data-category="Smart Watch">
+                <span class="category-content">
+                    <i class="bi bi-watch"></i>
+                    Smart Watch
+                </span>
+                <i class="bi bi-chevron-right arrow-icon"></i>
+            </a>
+            <a href="#" class="category-link" data-category="Laptops">
+                <span class="category-content">
+                    <i class="bi bi-laptop"></i>
+                    Laptops
+                </span>
+                <i class="bi bi-chevron-right arrow-icon"></i>
+            </a>
+            <a href="#" class="category-link" data-category="Teléfonos">
+                <span class="category-content">
+                    <i class="bi bi-phone"></i>
+                    Teléfonos
+                </span>
+                <i class="bi bi-chevron-right arrow-icon"></i>
+            </a>
+            <a href="#" class="category-link" data-category="TVs">
+                <span class="category-content">
+                    <i class="bi bi-tv"></i>
+                    TVs
+                </span>
+                <i class="bi bi-chevron-right arrow-icon"></i>
+            </a>
+            <a href="#" class="category-link" data-category="Bocinas">
+                <span class="category-content">
+                    <i class="bi bi-speaker"></i>
+                    Bocinas
+                </span>
+                <i class="bi bi-chevron-right arrow-icon"></i>
+            </a>
+            <a href="#" class="category-link" data-category="Auriculares/Audífonos">
+                <span class="category-content">
+                    <i class="bi bi-headset"></i>
+                    Auriculares/Audífonos
+                </span>
+                <i class="bi bi-chevron-right arrow-icon"></i>
+            </a>
+            <a href="#" class="category-link" data-category="Tablets">
+                <span class="category-content">
+                    <i class="bi bi-tablet"></i>
+                    Tablets
+                </span>
+                <i class="bi bi-chevron-right arrow-icon"></i>
+            </a>
+            
+        </div>
+    
+        <!-- Contenedor vacío donde JS insertará los productos -->
+        <div class="products" id="products-container">
+            <!-- Contenido cargado por JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // === BASE DE DATOS DE PRODUCTOS ===
+        const allCategories = {
+            "Smart Watch": { 
+                placeholder: "Buscar Smart Watches...",
+                items: [
+                    { name: "Smartwatch Deportivo X-Pro", price: "Q1,599.00", imageText: "SW PRO" },
+                    { name: "Xiaomi Mi Watch Lite", price: "Q850.00", imageText: "MI WATCH" },
+                    { name: "Apple Watch SE (2nd Gen)", price: "Q3,999.00", imageText: "APPLE SE" }
+                ]
+            },
+            "Laptops": {
+                placeholder: "Buscar Laptops...",
+                items: [
+                    { name: "Laptop Ultrabook Core i5", price: "Q6,500.00", imageText: "LAPTOP i5" },
+                    { name: "MacBook Air M2", price: "Q11,999.00", imageText: "MB AIR" },
+                    { name: "Chromebook 14 Pulgadas", price: "Q2,800.00", imageText: "CHROMEBK" }
+                ]
+            },
+            "Teléfonos": { 
+                placeholder: "Buscar Teléfonos...",
+                items: [
+                    { name: "Samsung Galaxy S24 Ultra", price: "Q14,000.00", imageText: "S24 ULT" },
+                    { name: "iPhone 15 Pro Max", price: "Q17,500.00", imageText: "I15 MAX" },
+                    { name: "Motorola Edge 40 Neo", price: "Q4,999.00", imageText: "MOTO EDGE" }
+                ]
+            },
+            "TVs": {
+                placeholder: "Buscar TVs...",
+                items: [
+                    { name: "Smart TV 55\" 4K UHD", price: "Q4,199.00", imageText: "TV 55" },
+                    { name: "OLED TV 65\" 120Hz", price: "Q18,500.00", imageText: "OLED 65" },
+                    { name: "TV Portátil 24\" HD", price: "Q1,500.00", imageText: "TV 24" }
+                ]
+            },
+            "Bocinas": {
+                placeholder: "Buscar Bocinas...",
+                items: [
+                    { name: "Bocina Bluetooth JBL Flip 6", price: "Q1,199.00", imageText: "JBL F6" },
+                    { name: "Sistema de Sonido 2.1 con Subwoofer", price: "Q1,850.00", imageText: "AUDIO 2.1" },
+                    { name: "Altavoz Inteligente Google Home", price: "Q650.00", imageText: "G HOME" }
+                ]
+            },
+            "Auriculares/Audífonos": {
+                placeholder: "Buscar Audífonos...",
+                items: [
+                    { name: "AirPods Pro (2nd Gen)", price: "Q2,499.00", imageText: "AP PRO" },
+                    { name: "Audífonos Inalámbricos Sony WH-1000XM5", price: "Q3,799.00", imageText: "SONY XM5" },
+                    { name: "Auriculares Gamer con Micrófono", price: "Q750.00", imageText: "HSET GM" }
+                ]
+            },
+            "Tablets": {
+                placeholder: "Buscar Tablets...",
+                items: [
+                    { name: "iPad Air (5th Gen)", price: "Q8,999.00", imageText: "IPAD AIR" },
+                    { name: "Samsung Galaxy Tab S9", price: "Q10,500.00", imageText: "TAB S9" },
+                    { name: "Tablet Amazon Fire 10", price: "Q1,599.00", imageText: "FIRE 10" }
+                ]
+            }
+        };
+
+        const productsContainer = document.getElementById('products-container');
+        const searchInput = document.getElementById('search-input');
+        const sidebarLinks = document.querySelectorAll('.category-link');
+        
+        // La categoría por defecto para iniciar ahora es 'Smart Watch'
+        const defaultCategory = 'Smart Watch'; 
+
+        // 1. FUNCIÓN: Genera el HTML de una tarjeta de producto
+        function createProductCard(product) {
+            // Usa el texto de la imagen para el placeholder y colores para coincidir con el diseño
+            const imageUrl = `https://placehold.co/210x170/23406e/ffffff?text=${encodeURIComponent(product.imageText)}`;
+            
+            return `
+                <div class="product-card">
+                    <img src="${imageUrl}" alt="${product.name}" onerror="this.onerror=null;this.src='https://placehold.co/210x170/4a6fa5/ffffff?text=No+Img';">
+                    <p>${product.name}</p>
+                    <span class="price">${product.price}</span>
+                </div>
+            `;
+        }
+
+        // 2. FUNCIÓN: Carga los productos de una categoría y actualiza el diseño
+        function loadCategory(categoryName) {
+            const categoryData = allCategories[categoryName];
+
+            if (!categoryData) {
+                productsContainer.innerHTML = '<h2>Error: Categoría no definida.</h2>';
+                searchInput.placeholder = 'Buscar Productos...';
+                return;
+            }
+
+            // Generar el HTML de los productos
+            productsContainer.innerHTML = categoryData.items.map(createProductCard).join('');
+            
+            // Actualizar placeholder de búsqueda
+            searchInput.placeholder = categoryData.placeholder;
+
+            // Actualizar estilo 'selected' de la barra lateral
+            sidebarLinks.forEach(link => {
+                link.classList.remove('selected');
+            });
+            // Añade la clase 'selected' al enlace que coincida con la categoría cargada
+            const selectedLink = document.querySelector(`.category-link[data-category="${categoryName}"]`);
+            if (selectedLink) {
+                selectedLink.classList.add('selected');
+            }
+        }
+
+        // 3. EVENT LISTENERS: Escuchar clics en la barra lateral
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault(); // Evitar navegación
+                // El target puede ser el <a> o cualquiera de sus hijos (<span> o <i>)
+                // Usamos closest('a') para asegurar que siempre obtenemos el elemento <a>
+                const targetLink = e.target.closest('a.category-link');
+                if (targetLink) {
+                    const category = targetLink.dataset.category;
+                    loadCategory(category);
+                }
+            });
+        });
+
+        // 4. INICIALIZACIÓN: Cargar la categoría por defecto inmediatamente al inicio del script.
+        loadCategory(defaultCategory);
+
+    </script>
+</body>
+</html>

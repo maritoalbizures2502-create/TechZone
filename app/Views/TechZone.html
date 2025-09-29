@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TechZone - Cliente</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #0d47a1, #1976d2);
+      color: white;
+    }
+
+    .navbar {
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      color: #0d47a1 !important;
+      font-weight: 600;
+    }
+
+    .navbar-nav .nav-link {
+      color: #0d47a1 !important;
+      font-weight: 500;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #1565c0 !important;
+    }
+
+    .btn-outline-success {
+      color: #0d47a1;
+      border-color: #0d47a1;
+    }
+
+    .btn-outline-success:hover {
+      background-color: #0d47a1;
+      color: white;
+    }
+
+    .section {
+      padding: 40px;
+      background-color: rgba(255, 255, 255, 0.95);
+      color: #0d47a1;
+      margin: 20px;
+      border-radius: 10px;
+    }
+
+    .section img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .categorias {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .categorias button {
+      padding: 10px 20px;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .categorias button:hover {
+      background-color: #1565c0;
+    }
+
+    .productos {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: white;
+      color: #0d47a1;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      width: 150px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-size: 14px;
+    }
+
+    .card img {
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    footer {
+      background-color: transparent;
+      color: #fbc02d;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de navegación Bootstrap -->
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold text-primary" href="#">TechZone</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Ofertas</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categorías</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Celulares</a></li>
+              <li><a class="dropdown-item" href="#">Televisores</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Carrito de compra</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#">Contáctanos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Perfil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Configuración</a></li>
+        </ul>
+
+        <!-- Sección derecha: búsqueda + perfil + carrito -->
+        <div class="d-flex align-items-center gap-2">
+          <input class="form-control rounded-pill" type="search" placeholder="Buscar" aria-label="Buscar">
+          <button class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+            <img src="C:\xampp\htdocs\img\12225881.png" alt="Perfil" style="width: 33px; height: 33px; border-radius: 50%;">
+          </button>
+          <button class="btn btn-outline-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+            <img src="C:\xampp\htdocs\img\3144456.png" alt="Carrito" style="width: 24px; height: 24px;">
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section id="inicio" class="section">
+    <img src="C:\xampp\htdocs\img\1b9769ff-fd90-4254-aba1-8309de38a88d.jpeg" alt="Producto" width="200px" height="200px">
+    <h2>¿Quiénes somos?</h2>
+    <p>TechZone es una tienda especializada en tecnología que ofrece una amplia variedad de productos y servicios para todos los gustos y necesidades.</p>
+  </section>
+
+  <section id="categorias" class="section">
+    <h2>Categorías</h2>
+    <div class="categorias">
+      <button>Smart Watches</button>
+      <button>Laptops</button>
+      <button>Audífonos</button>
+      <button>Accesorios</button>
+      <button>Audio</button>
+      <button>Accesorios Audífonos</button>
+    </div>
+    <div class="productos">
+      <div class="card">
+        <img src="C:\xampp\htdocs\img\pms_1638242137.34968362.png" alt="Producto" width="60px" height="60px">
+        <p>Smartwatch Pro</p>
+      </div>
+      <div class="card">
+        <img src="C:\xampp\htdocs\img\airpods-pro-segunda-generacion1.png" alt="Producto" width="60px" height="60px">
+        <p>Airpods pro 2da generación</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ofertas" class="section">
+    <h2>Ofertas</h2>
+    <p>Descubre nuestras promociones exclusivas para clientes registrados.</p>
+    <div class="productos">
+      <div class="card">
+        <img src="C:\xampp\htdocs\img\file.png" alt="Samsung Galaxy S24" width="60px" height="60px">
+        <p>Samsung Galaxy S24 - 10% de descuento</p>
+      </div>
+      <div class="card">
+        <img src="C:\xampp\htdocs\img\hero_static__c9sislzzicq6_large.png" alt="Mac 11va generación" width="60px" height="60px">
+        <p>MacBook Air de 15 pulgadas - 15% de descuento</p>
+      </div>
+      <div class="card">
+        <img src="C:\xampp\htdocs\img\pms_1638242137.34968362.png" alt="Smartwatch" width="60px" height="60px">
+        <p>Smartwatch - 30% de descuento</p>
+      </div>
+      <div class="card">
+        <img src="C:\xampp\htdocs\img\apple-iphone-15-pro-max-256gb-blue-titanium-mu693ll-a-a.png" alt="iPhone 14 Pro Max" width="40px" height="60px">
+        <p>iPhone 15 Pro Max - 25% de descuento</p
+      </div>
+    </div>
+  </section>
+
+  <section id="condiciones" class="section">
+    <h2>Condiciones, Términos y Políticas de Privacidad</h2>
+    <button>Consulta nuestras condiciones y políticas de privacidad</button>
+
+
+
+
+

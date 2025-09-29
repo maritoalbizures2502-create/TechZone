@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>TechZone - Configuración General</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            /* Colores para el modo claro */
+            --bg-light: #f0f4f7;
+            --main-bg-light: #1976d2;
+            --card-bg-light: white;
+            --text-light: #0d47a1;
+            --heading-light: #0d47a1;
+            --border-light: #ccc;
+            --btn-primary-light: #0d47a1;
+            --btn-secondary-border-light: #ef4444;
+            --btn-secondary-text-light: #ef4444;
+            --btn-secondary-hover-bg-light: #ef4444;
+            --toggle-bg-light: #ccc;
+            --toggle-on-light: #1976d2;
+            --dark-mode-text-color: #008cff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        /* --- Modo Oscuro --- */
+        body.dark-mode {
+            --bg-dark: #121212;
+            --main-bg-dark: #1e1e1e;
+            --card-bg-dark: #2c2c2c;
+            --text-dark: white;
+            --heading-dark: white;
+            --border-dark: #555;
+            --btn-primary-dark: #008cff;
+            --btn-secondary-border-dark: #ef5350;
+            --btn-secondary-text-dark: #ef5350;
+            --btn-secondary-hover-bg-dark: #ef5350;
+            --toggle-on-dark: #007cf7;
+            
+            background-color: var(--bg-dark);
+        }
+
+        /* Cambios en la barra de navegación para el modo oscuro */
+        body.dark-mode .navbar {
+            background-color: #23272f !important; /* Gris god */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid #353b48;
+        }
+
+        body.dark-mode .navbar-brand,
+        body.dark-mode .nav-link,
+        body.dark-mode .dropdown-toggle {
+            color: #e0e6ed !important; /* Gris claro para contraste */
+        }
+        
+        body.dark-mode .navbar .search-box,
+        body.dark-mode .form-control {
+            background-color: #2c2f36 !important;
+            color: #e0e6ed !important;
+            border: 1px solid #353b48 !important;
+        }
+
+        body.dark-mode .navbar .profile-icon {
+            background-color: #353b48 !important;
+            color: #e0e6ed !important;
+        }
+
+        body.dark-mode .navbar-toggler-icon {
+            filter: invert(1);
+        }
+        
+        /* --- Fin de cambios en la barra de navegación --- */
+
+        /* --- Navbar --- */
+        .navbar {
+            background-color: var(--card-bg-light);
+            padding: 15px 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--heading-light) !important;
+        }
+
+        .nav-link, .dropdown-toggle {
+            color: var(--text-light) !important;
+            font-weight: 600;
+        }
+
+        .nav-link:hover, .dropdown-toggle:hover {
+            color: var(--heading-light) !important;
+        }
+        
+        body.dark-mode .nav-link:hover, body.dark-mode .dropdown-toggle:hover {
+            color: #008cff !important; 
+        }
+
+        .navbar .search-box {
+            padding: 8px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: transparent;
+            color: var(--text-light);
+        }
+        
+        .navbar .profile-icon {
+            width: 32px;
+            height: 32px;
+            background-color: var(--main-bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(83, 83, 83);
+            font-weight: 600;
+        }
+
+        /* --- Main Content and Card --- */
+        .content-area {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: calc(100vh - 70px);
+            background-color: var(--main-bg-light);
+            padding: 50px 20px;
+            transition: background-color 0.3s ease;
+        }
+        
+        body.dark-mode .content-area {
+            background-color: #121212; 
+        }
+
+        .settings-card {
+            background-color: var(--card-bg-light);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 700px;
+            transition: background-color 0.3s ease;
+        }
+
+        body.dark-mode .settings-card {
+            background-color: #1e1e1e; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .settings-card h4 {
+            font-weight: 600;
+            color: var(--heading-light);
+            margin-bottom: 25px;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .settings-card h4 {
+            color: var(--heading-dark);
+        }
+
+        .setting-group {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .form-label, .form-check-label {
+            margin-bottom: 0;
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .form-label, body.dark-mode .form-check-label {
+            color: white; 
+        }
+
+        /* Alineación y estilo para los elementos dentro de la tarjeta */
+        .form-label-language,
+        .form-label-vis {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        /* Estilo para los inputs deshabilitados */
+        input:disabled,
+        select:disabled {
+            color: #888;
+            background-color: #f5f5f5;
+            opacity: 0.5;
+        }
+        
+        body.dark-mode input:disabled,
+        body.dark-mode select:disabled {
+            background-color: #444;
+            color: white; 
+            border-color: #555;
+            opacity: 0.5; 
+        }
+        
+        /* --- Dropdown Styling --- */
+        .form-select {
+            border: 1px solid var(--border-light);
+            background-color: var(--card-bg-light);
+            color: var(--text-light);
+            border-radius: 5px;
+            padding: 8px 12px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px 12px;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode .form-select {
+            border: 1px solid var(--border-dark);
+            background-color: var(--card-bg-dark);
+            color: var(--text-dark);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e0e0e0' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+        }
+        
+        /* --- Botones --- */
+        .btn-techzone-primary {
+            background-color: var(--btn-primary-light);
+            border-color: var(--btn-primary-light);
+            color: white;
+            font-weight: 600;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        body.dark-mode .btn-techzone-primary {
+            background-color: #008cff;
+            border-color: #008cff;
+        }
+
+        .btn-techzone-primary:hover {
+            background-color: #1565c0;
+            border-color: #1565c0;
+        }
+        
+        body.dark-mode .btn-techzone-primary:hover {
+            background-color: #0081fa;
+            border-color: #0081fa;
+        }
+        
+        .btn-techzone-secondary {
+            background-color: transparent;
+            border: 2px solid var(--btn-secondary-border-light);
+            color: var(--btn-secondary-text-light);
+            font-weight: 600;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+        
+        body.dark-mode .btn-techzone-secondary {
+            border: 2px solid #ef5350;
+            color: #ef5350;
+        }
+
+        .btn-techzone-secondary:hover {
+            background-color: var(--btn-secondary-hover-bg-light);
+            color: white;
+        }
+        
+        body.dark-mode .btn-techzone-secondary:hover {
+            background-color: #ef5350;
+            color: white;
+        }
+        
+        /* --- Estilo para el botón deslizante (Toggle Switch) --- */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 28px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 24px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #008cff;
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(22px);
+        }
+        
+        /* --- Estilo de los checkboxes (cuadrados) --- */
+        .form-check-input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-light);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        
+        body.dark-mode .form-check-input {
+            border: 2px solid var(--border-dark);
+        }
+
+        .form-check-input:checked {
+            background-color: var(--main-bg-light);
+            border-color: var(--main-bg-light);
+        }
+        
+        .form-check-input:checked:before {
+            /* Elimina el texto de la palomita */
+            content: '';
+            display: block;
+        }
+
+        body.dark-mode .form-check-input:checked {
+            background-color: #2196f3;
+            border-color: #2196f3;
+        }
+        /* Los siguientes estilos eliminan el texto extra al usar los íconos de Bootstrap. */
+        .btn-lg i.bi {
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+        
+        body.dark-mode .form-control::placeholder {
+            color: #e0e6ed !important; /* Blanco/gris claro para el placeholder */
+            opacity: 1;
+        }
+        body.dark-mode .form-control {
+            color: #e0e6ed !important; /* Blanco/gris claro para el texto */
+        }
+
+        /* Iconos perfil y carrito en modo oscuro: fondo blanco, borde azul */
+body.dark-mode .btn.rounded-circle,
+body.dark-mode .btn.btn-primary.rounded-circle {
+    background-color: #fff !important;
+    border: 3px solid #ffffff !important;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Hover: fondo azul, icono se mantiene visible */
+body.dark-mode .btn.rounded-circle:hover,
+body.dark-mode .btn.btn-primary.rounded-circle:hover {
+    background-color: #008cff !important;
+    border-color: #008cff !important;
+}
+
+/* Las imágenes se mantienen igual, no se ocultan ni se invierten */
+body.dark-mode .btn.rounded-circle img,
+body.dark-mode .btn.btn-primary.rounded-circle img {
+    filter: none !important;
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-primary" href="Cliente.html">TechZone</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="Cliente.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="CatalogoCompleto.html">Ofertas</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categorías</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="CatalogoCompleto.html">Smartwatch</a></li>
+                            <li><a class="dropdown-item" href="CatalogoCompleto.html">Celulares</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="Contactos.html">¿No encuentras lo que necesitas? Contáctanos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="Contactos.html">Contactos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Perfil.html">Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Configuracion.html">Configuración</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-2">
+                    <input class="form-control rounded-pill" type="search" placeholder="Buscar" aria-label="Buscar">
+                    <button class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                      <img src="C:\xampp\htdocs\img\12225881.png" style = width:33px; height:33px; border-radius:50% alt="Perfil">
+                    </button>
+                    <button class="btn rounded-circle d-flex align-items-center justify-content-center"
+                            style="width: 40px; height: 40px; background-color: white; border: 3px solid #0d7eef;">
+                         <img src="C:\xampp\htdocs\img\3144456.png" style = width:28px; height:28px; border-radius:50% alt="Carrito">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="content-area">
+        <div class="settings-card">
+            <h4>Configuración de usuario</h4>
+
+            <div class="setting-group">
+                <label class="form-label" for="darkModeToggle">Modo oscuro</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-group">
+                <label class="form-label" for="notifications">Activar notificaciones</label>
+                <input class="form-check-input" type="checkbox" id="notifications">
+            </div>
+            
+            <div class="setting-group">
+                <label class="form-label" for="alerts">Sonido de alertas</label>
+                <input class="form-check-input" type="checkbox" id="alerts">
+            </div>
+
+            <hr>
+
+           <div class="setting-group flex-column align-items-start">
+               <label for="language" class="form-label form-label-language">Idioma</label>
+               <select class="form-select" id="language">
+                   <option selected>Español</option>
+                   <option>Inglés</option>
+                   <option>Francés</option>
+                   <option>Portugués</option>
+               </select>
+           </div>
+
+           <div class="setting-group flex-column align-items-start">
+               <label for="viewPreference" class="form-label form-label-vis">Preferencia de visualización</label>
+               <select class="form-select" id="viewPreference">
+                   <option selected>Cuadrícula</option>
+                   <option>Lista</option>
+                   <option>Compacta</option>
+                   <option>Detallada</option>
+               </select>
+           </div>
+            
+            <div class="setting-group">
+                <label class="form-label" for="highContrast">Modo alto contraste</label>
+                <input class="form-check-input" type="checkbox" id="highContrast">
+            </div>
+
+            <div class="d-grid gap-2 mt-4">
+                <button class="btn btn-lg btn-techzone-primary">Guardar configuración</button>
+                <button class="btn btn-lg btn-techzone-secondary">Cerrar sesión</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // Cargar el tema guardado
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            darkModeToggle.checked = true;
+        } else {
+            body.classList.remove('dark-mode'); 
+            darkModeToggle.checked = false;
+        }
+        
+        // Manejar el cambio de tema
+        darkModeToggle.addEventListener('change', () => {
+            if (darkModeToggle.checked) {
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>

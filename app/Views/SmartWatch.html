@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TechZone</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tienda - Smartwatches</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #e3eaf2;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #23406e; /* Azul marino más claro */
+      padding: 16px 32px;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(35,64,110,0.08);
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 20px;
+      padding: 5px 16px;
+      width: 320px;
+      color: #23406e;
+    }
+    .search-box input {
+      border: none;
+      outline: none;
+      flex: 1;
+      padding: 5px;
+      font-size: 1rem;
+      background: transparent;
+      color: #23406e;
+    }
+    .search-box input::placeholder {
+      color: #90caf9;
+    }
+    .profile-icon {
+      width: 40px;
+      height: 40px;
+      background: #34588c; /* Azul marino aún más claro */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.5rem;
+      box-shadow: 0 1px 4px rgba(35,64,110,0.08);
+    }
+    .container {
+      display: flex;
+      padding: 32px;
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .sidebar {
+      width: 220px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(35,64,110,0.05);
+      padding: 24px;
+      height: fit-content;
+    }
+    .sidebar h2 {
+      font-size: 1.2rem;
+      color: #23406e;
+      margin-bottom: 18px;
+      margin-top: 0;
+    }
+    .sidebar button {
+      display: block;
+      width: 100%;
+      margin: 6px 0;
+      padding: 10px 16px;
+      border: none;
+      background: #e3eaf2;
+      color: #23406e;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .sidebar button:hover,
+    .sidebar button:focus {
+      background: #23406e;
+      color: #fff;
+      outline: none;
+    }
+    .products {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding-left: 0;
+    }
+    .product-card {
+      background: #7d8a97;
+      border-radius: 16px;
+      padding: 20px;
+      width: 220px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(35,64,110,0.07);
+      color: #fff;
+      transition: box-shadow 0.2s;
+    }
+    .product-card:hover {
+      box-shadow: 0 4px 16px rgba(35,64,110,0.12);
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      background: #e3eaf2;
+    }
+    .product-card p {
+      margin: 10px 0 5px;
+      font-size: 15px;
+      color: #fff;
+    }
+    .product-card span {
+      font-weight: bold;
+      color: #fff;
+      font-size: 1.1rem;
+    }
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+      }
+      .sidebar {
+        width: 100%;
+        margin-bottom: 16px;
+      }
+      .products {
+        gap: 16px;
+        justify-content: center;
+      }
+      .product-card {
+        width: 90vw;
+        max-width: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display:flex; align-items:center; gap:15px;">
+      <button style="background:none; border:none; font-size:24px; color:#fff; cursor:pointer;">←</button>
+      <div class="search-box">
+        <input type="text" placeholder="Buscar Smartwatch...">
+        <span style="font-size:1.2rem;">🔍</span>
+      </div>
+    </div>
+    <div class="profile-icon">👤</div>
+  </header>
+ 
+  <div class="container">
+    <div class="sidebar">
+      <h2>Categorías</h2>
+      <button style="background:#23406e; color:#fff;">Smart Watch</button>
+      <button>Laptops</button>
+      <button>Teléfonos</button>
+      <button>TVs</button>
+      <button>Bocinas</button>
+      <button>Auriculares/Audífonos</button>
+      <button>Accesorios</button>
+      <button>Tablets</button>
+    </div>
+ 
+    <div class="products">
+      <div class="product-card">
+        <img src="C:\XAMPP\htdocs\TechZone\app\Views\img\smartwatch1.webp" alt="Smartwatch Xiaomi">
+        <p>Smartwatch Xiaomi Redmi Watch 3 Active 1.83&quot; LCD Negro</p>
+        <span>Q899.00</span>
+      </div>
+      <div class="product-card">
+        <img src="C:\XAMPP\htdocs\TechZone\app\Views\img\smartwatch2.webp" alt="Reloj Smart Watch 7">
+        <p>Reloj Smart Watch 7 Pro Rosado</p>
+        <span>Q1,299.00</span>
+      </div>
+      <div class="product-card">
+        <img src="C:\XAMPP\htdocs\TechZone\app\Views\img\smartwatch3.jpg" alt="Apple Watch SE">
+        <p>Reloj Apple Watch SE</p>
+        <span>Q2,500.00</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+ 
+  </body>
+</html>

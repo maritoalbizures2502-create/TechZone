@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TechZone - Inicio de Sesión</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0d47a1, #1976d2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      width: 350px;
+      text-align: center;
+    }
+
+    .logo {
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 60px;
+    }
+
+    .logo h1 {
+      margin: 10px 0 5px;
+      color: #0d47a1;
+      font-size: 24px;
+    }
+
+    .logo p {
+      color: #fbc02d;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .btn {
+      background-color: #0d47a1;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #1565c0;
+    }
+
+    .links {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .links a {
+      color: #1976d2;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #d32f2f;
+    }
+
+    .message.success {
+      color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="logo">
+      <img src="C:\xampp\htdocs\img\1b9769ff-fd90-4254-aba1-8309de38a88d.jpeg" alt="Logo" width="100px" height="60px">
+      <h1>TechZone</h1>
+      <p>Technology Store</p>
+    </div>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button class="btn" type="submit">Sign In</button>
+    </form>
+    <div class="message" id="loginMessage"></div>
+    <div class="links">
+      <a href="#">¿Olvidaste tu contraseña?</a><br>
+      <a href="#">Registrarse</a>
+    </div>
+  </div>
+
+  <script>
+  const validUsers = [
+    { email: "adminmarco@bilinguesanjuan.edu.gt", password: "1234", nombre: "Marco" },
+    { email: "adminmario@bilinguesanjuan.edu.gt", password: "1234", nombre: "Mario" },
+    { email: "admingenesisg@bilinguesanjuan.edu.gt", password: "1234", nombre: "Genesis" }
+  ];
+
+  document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const emailInput = document.getElementById("email").value.trim();
+    const passwordInput = document.getElementById("password").value.trim();
+    const messageBox = document.getElementById("loginMessage");
+
+    const userFound = validUsers.find(user =>
+      user.email === emailInput && user.password === passwordInput
+    );
+
+    if (userFound) {
+      messageBox.textContent = "Bienvenido, " + userFound.nombre;
+      messageBox.classList.remove("error");
+      messageBox.classList.add("success");
+    } else {
+      messageBox.textContent = "Contraseña incorrecta o Usuario incorrecto";
+      messageBox.classList.remove("success");
+      messageBox.classList.add("error");
+    }
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
