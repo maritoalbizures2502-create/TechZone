@@ -236,6 +236,28 @@
                 max-width: none;
             }
         }
+
+        .btn-cart {
+            margin-top: 10px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+            width: 100%;
+        }
+        .btn-cart:hover {
+            background: #23406e;
+        }
+        .stock-text {
+            margin-top: 8px;
+            font-size: 0.98rem;
+            color: #e3f2fd;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -247,12 +269,24 @@
                 <i class="bi bi-arrow-left"></i>
             </button>
             <div class="search-box">
-                <input type="text" id="search-input" placeholder="Buscar Productos...">
+                <input type="text" id="search-input" placeholder="Buscar Productos">
                 <i class="bi bi-search"></i>
             </div>
         </div>
-        <div class="profile-icon">
-            <i class="bi bi-person-fill"></i>
+        <div style="position: relative;">
+  <button id="cart-btn" class="btn rounded-circle d-flex align-items-center justify-content-center"
+    style="width: 40px; height: 40px; background-color: #fff; border: 3px solid #1976d2; box-sizing: border-box; border-radius: 50%;">
+        <img src="C:\xampp\htdocs\img\3144456.png" alt="Carrito" style="width: 24px; height: 25px;">
+  </button>
+  <div id="cart-dropdown" style="display:none; position:absolute; right:0; top:50px; background:#fff; border-radius:50px; box-shadow:0 2px 8px rgba(0,0,0,0.15); min-width:240px; z-index:1000; padding:16px;">
+    <h4 style="margin:0 0 8px 0; font-size:1rem; color:#23406e;">Carrito</h4>
+    <ul id="cart-list" style="list-style:none; padding:0; margin:0; color:#23406e;"></ul>
+    <div id="cart-empty" style="color:#888; font-size:0.95rem;">El carrito está vacío.</div>
+  </div>
+</div>
+</div>
+</div>
+</nav>
         </div>
     </header>
     
@@ -330,17 +364,20 @@
                     { 
                         name: "Smartwatch Deportivo X-Pro", 
                         price: "Q1,599.00", 
-                        imageUrl: "img/smartwatch1.webp" 
+                        imageUrl: "img/smartwatch1.webp",
+                        stock: 27
                     },
                     { 
                         name: "Xiaomi Mi Watch Lite", 
                         price: "Q850.00", 
-                        imageUrl: "img/watch2.webp"
+                        imageUrl: "img/watch2.webp",
+                        stock: 15
                     },
                     { 
                         name: "Apple Watch SE (2nd Gen)", 
                         price: "Q3,999.00", 
-                        imageUrl: "img/swatch3.jpg"
+                        imageUrl: "img/swatch3.jpg",
+                        stock: 8
                     }
                 ]
             },
@@ -350,17 +387,20 @@
                     { 
                         name: "Laptop Ultrabook Core i5", 
                         price: "Q6,500.00", 
-                        imageUrl: "C:/xampp/htdocs/img/hero_static__c9sislzzicq6_large.png" 
+                        imageUrl: "C:/xampp/htdocs/img/hero_static__c9sislzzicq6_large.png",
+                        stock: 10
                     },
                     { 
                         name: "MacBook Air M2", 
                         price: "Q11,999.00", 
-                        imageUrl: "C:/xampp/htdocs/img/laptop3.webp"
+                        imageUrl: "C:/xampp/htdocs/img/laptop3.webp",
+                        stock: 5
                     },
                     { 
                         name: "Chromebook 14 Pulgadas", 
                         price: "Q2,800.00", 
-                        imageUrl: "C:/xampp/htdocs/img/laptop2.jpg"
+                        imageUrl: "C:/xampp/htdocs/img/laptop2.jpg",
+                        stock: 33
                     }
                 ]
             },
@@ -370,23 +410,26 @@
                     { 
                         name: "Samsung Galaxy S24 Ultra", 
                         price: "Q14,000.00", 
-                        imageUrl: "img/phone1.webp" 
+                        imageUrl: "img/phone1.webp",
+                        stock: 3
                     },
-                    // *** TU IMAGEN AÑADIDA AQUÍ ***
                     { 
                         name: "Samsung Galaxy A33 5G", 
                         price: "Q11,200.00", 
-                        imageUrl: "img/phone2.webp" // <--- USA LA RUTA RELATIVA
+                        imageUrl: "img/phone2.webp",
+                        stock: 7
                     },
                     {
                         name: "iPhone 15 Pro Max", 
                         price: "Q17,500.00", 
-                        imageUrl: "C:/xampp/htdocs/img/iphone15promax.png"
+                        imageUrl: "C:/xampp/htdocs/img/iphone15promax.png",
+                        stock: 2
                     },
                     { 
                         name: "iPhone 14 Pro Max", 
                         price: "Q7,900.00", 
-                        imageUrl: "C:/xampp/htdocs/img/phone3.avif"
+                        imageUrl: "C:/xampp/htdocs/img/phone3.avif",
+                        stock: 4
                     },
                 ]
             },
@@ -396,17 +439,20 @@
                     { 
                         name: "Smart TV 55\" 4K UHD", 
                         price: "Q4,199.00", 
-                        imageUrl: "C:/xampp/htdocs/img/tv1.webp"
+                        imageUrl: "C:/xampp/htdocs/img/tv1.webp",
+                        stock: 6
                     },
                     { 
                         name: "OLED TV 65\" 120Hz", 
                         price: "Q18,500.00", 
-                        imageUrl: "C:/xampp/htdocs/img/tv2.webp"
+                        imageUrl: "C:/xampp/htdocs/img/tv2.webp",
+                        stock: 1
                     },
                     { 
                         name: "TV Portátil 24\" HD", 
                         price: "Q1,500.00", 
-                        imageUrl: "C:/xampp/htdocs/img/tv3.jpg"
+                        imageUrl: "C:/xampp/htdocs/img/tv3.jpg",
+                        stock: 14
                     }
                 ]
             },
@@ -416,17 +462,20 @@
                     { 
                         name: "Bocina Bluetooth JBL Flip 6", 
                         price: "Q1,199.00", 
-                        imageUrl: "C:/xampp/htdocs/img/bocina1.avif"
+                        imageUrl: "C:/xampp/htdocs/img/bocina1.avif",
+                        stock: 20
                     },
                     { 
                         name: "Sistema de Sonido 2.1 con Subwoofer", 
                         price: "Q1,850.00", 
-                        imageUrl: "C:/xampp/htdocs/img/bocina2.jpg"
+                        imageUrl: "C:/xampp/htdocs/img/bocina2.jpg",
+                        stock: 5
                     },
                     { 
                         name: "Altavoz Inteligente Google Home", 
                         price: "Q650.00", 
-                        imageUrl: "C:/xampp/htdocs/img/bocina3.jpg"
+                        imageUrl: "C:/xampp/htdocs/img/bocina3.jpg",
+                        stock: 24
                     }
                 ]
             },
@@ -436,17 +485,20 @@
                     { 
                         name: "AirPods Pro (2nd Gen)", 
                         price: "Q2,499.00", 
-                        imageUrl: "C:/xampp/htdocs/img/auri2.webp"
+                        imageUrl: "C:/xampp/htdocs/img/auri2.webp",
+                        stock: 8
                     },
                     { 
                         name: "Audífonos Inalámbricos Sony WH-1000XM5", 
                         price: "Q3,799.00", 
-                        imageUrl: "C:/xampp/htdocs/img/auri1.jpg"
+                        imageUrl: "C:/xampp/htdocs/img/auri1.jpg",
+                        stock: 4
                     },
                     { 
                         name: "Auriculares Gamer con Micrófono", 
                         price: "Q750.00", 
-                        imageUrl: "C:/xampp/htdocs/img/auri3.webp"
+                        imageUrl: "C:/xampp/htdocs/img/auri3.webp",
+                        stock: 15
                     }
                 ]
             },
@@ -456,17 +508,20 @@
                     { 
                         name: "iPad Air (5th Gen)", 
                         price: "Q8,999.00", 
-                        imageUrl: "C:/xampp/htdocs/img/tab1.webp" 
+                        imageUrl: "C:/xampp/htdocs/img/tab1.webp",
+                        stock: 10
                     },
                     { 
                         name: "Samsung Galaxy Tab S9", 
                         price: "Q10,500.00", 
-                        imageUrl: "C:/xampp/htdocs/img/tab3.jpg"
+                        imageUrl: "C:/xampp/htdocs/img/tab3.jpg",
+                        stock: 5
                     },
                     { 
                         name: "Tablet Amazon Fire 10", 
                         price: "Q1,599.00", 
-                        imageUrl: "C:/xampp/htdocs/img/tab2.jpg"
+                        imageUrl: "C:/xampp/htdocs/img/tab2.jpg",
+                        stock: 15
                     }
                 ]
             }
@@ -480,17 +535,17 @@
         const defaultCategory = 'Smart Watch'; 
 
         // 1. FUNCIÓN: Genera el HTML de una tarjeta de producto
-        function createProductCard(product) {
-            // Usa product.imageUrl, que contiene la ruta relativa (ej: img/phone2.webp)
+        function createProductCard(product, categoryIndex, productIndex) {
             const imageUrl = product.imageUrl;
-            
             return `
-                <div class="product-card">
+                <div class="product-card" data-category-index="${categoryIndex}" data-product-index="${productIndex}">
                     <!-- Si la imagen no carga, se usa un placeholder con texto -->
                     <img src="${imageUrl}" alt="${product.name}" 
                          onerror="this.onerror=null;this.src='https://placehold.co/210x170/4a6fa5/ffffff?text=${encodeURIComponent(product.name)}';">
                     <p>${product.name}</p>
                     <span class="price">${product.price}</span>
+                    <button class="btn-cart" onclick="addToCart('${categoryIndex}', ${productIndex})">Agregar al carrito</button>
+                    <div class="stock-text" id="stock-${categoryIndex}-${productIndex}">Cantidad disponible: ${product.stock}</div>
                 </div>
             `;
         }
@@ -498,15 +553,15 @@
         // 2. FUNCIÓN: Carga los productos de una categoría y actualiza el diseño
         function loadCategory(categoryName) {
             const categoryData = allCategories[categoryName];
-
             if (!categoryData) {
                 productsContainer.innerHTML = '<h2>Error: Categoría no definida.</h2>';
-                searchInput.placeholder = 'Buscar Productos...';
+                searchInput.placeholder = 'Buscar Productos';
                 return;
             }
-
             // Generar el HTML de los productos
-            productsContainer.innerHTML = categoryData.items.map(createProductCard).join('');
+            productsContainer.innerHTML = categoryData.items
+                .map((product, idx) => createProductCard(product, categoryName, idx))
+                .join('');
             
             // Actualizar placeholder de búsqueda
             searchInput.placeholder = categoryData.placeholder;
@@ -537,6 +592,104 @@
         // 4. INICIALIZACIÓN: Cargar la categoría por defecto inmediatamente al inicio del script.
         loadCategory(defaultCategory);
 
+        // Guarda el stock original para poder reiniciar
+const originalStock = {};
+Object.keys(allCategories).forEach(cat => {
+    allCategories[cat].items.forEach((prod, idx) => {
+        if (!originalStock[cat]) originalStock[cat] = {};
+        originalStock[cat][idx] = prod.stock;
+    });
+});
+
+const cart = [];
+
+// Modifica la función para crear la tarjeta de producto
+function createProductCard(product, categoryName, productIndex) {
+    const imageUrl = product.imageUrl.startsWith("C:/") ? "../../img/" + imageUrl.split("/").pop() : product.imageUrl;
+    return `
+        <div class="product-card">
+            <img src="${imageUrl}" alt="${product.name}" 
+                 onerror="this.onerror=null;this.src='https://placehold.co/210x170/4a6fa5/ffffff?text=${encodeURIComponent(product.name)}';">
+            <p>${product.name}</p>
+            <span class="price">${product.price}</span>
+            <button class="btn-cart" onclick="addToCart('${categoryName}', ${productIndex})">Agregar al carrito</button>
+            <div class="stock-text" id="stock-${categoryName}-${productIndex}">Cantidad disponible: ${product.stock}</div>
+        </div>
+    `;
+}
+
+// Función para agregar al carrito y actualizar stock
+function addToCart(categoryName, productIndex) {
+    const product = allCategories[categoryName].items[productIndex];
+    if (product.stock > 0) {
+        product.stock--;
+        document.getElementById(`stock-${categoryName}-${productIndex}`).textContent =
+            `Cantidad disponible: ${product.stock}`;
+        cart.push({ name: product.name, price: product.price, category: categoryName, index: productIndex });
+        updateCartDropdown();
+    }
+}
+
+// Actualiza el contenido del carrito desplegable
+function updateCartDropdown() {
+    const cartList = document.getElementById('cart-list');
+    const cartEmpty = document.getElementById('cart-empty');
+    cartList.innerHTML = '';
+    if (cart.length === 0) {
+        cartEmpty.style.display = 'block';
+    } else {
+        cartEmpty.style.display = 'none';
+        cart.forEach((item, i) => {
+            const li = document.createElement('li');
+            li.style.display = "flex";
+            li.style.alignItems = "center";
+            li.style.justifyContent = "space-between";
+            li.style.marginBottom = "8px";
+            li.innerHTML = `
+                <span>${item.name} - ${item.price}</span>
+                <button onclick="removeFromCart(${i})" style="background:#e53935; border:none; border-radius:8px; padding:4px 8px; margin-left:10px; cursor:pointer;">
+                    <img src="C:/xampp/htdocs/img/1017530.png" alt="Eliminar" style="width:18px; height:18px;">
+                </button>
+            `;
+            cartList.appendChild(li);
+        });
+    }
+}
+
+// Elimina producto del carrito y reinicia el stock
+function removeFromCart(cartIndex) {
+    const item = cart[cartIndex];
+    if (item) {
+        // Reinicia el stock en la base de datos y en la vista
+        allCategories[item.category].items[item.index].stock = originalStock[item.category][item.index];
+        document.getElementById(`stock-${item.category}-${item.index}`).textContent =
+            `Cantidad disponible: ${originalStock[item.category][item.index]}`;
+        cart.splice(cartIndex, 1);
+        updateCartDropdown();
+    }
+}
+
+// Mostrar/ocultar el carrito al hacer clic en el botón
+document.getElementById('cart-btn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    const dropdown = document.getElementById('cart-dropdown');
+    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+});
+
+// Cierra el carrito si se hace clic fuera, excepto si el clic es en el botón de eliminar
+document.addEventListener('click', function(e) {
+    const cartBtn = document.getElementById('cart-btn');
+    const cartDropdown = document.getElementById('cart-dropdown');
+    // Si el clic es en el botón de eliminar o su imagen, no cerrar el carrito
+    if (
+        cartBtn.contains(e.target) ||
+        cartDropdown.contains(e.target) ||
+        (e.target.closest('button') && e.target.closest('button').onclick && e.target.closest('button').onclick.toString().includes('removeFromCart'))
+    ) {
+        return;
+    }
+    cartDropdown.style.display = 'none';
+});
     </script>
 </body>
 </html>
