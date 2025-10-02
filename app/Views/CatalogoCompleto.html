@@ -276,7 +276,7 @@
         <div style="position: relative;">
   <button id="cart-btn" class="btn rounded-circle d-flex align-items-center justify-content-center"
     style="width: 40px; height: 40px; background-color: #fff; border: 3px solid #1976d2; box-sizing: border-box; border-radius: 50%;">
-        <img src="C:\xampp\htdocs\img\3144456.png" alt="Carrito" style="width: 24px; height: 25px;">
+    <img src="C:\xampp\htdocs\img\3144456.png" alt="Carrito" style="width: 24px; height: 25px;">
   </button>
   <div id="cart-dropdown" style="display:none; position:absolute; right:0; top:50px; background:#fff; border-radius:50px; box-shadow:0 2px 8px rgba(0,0,0,0.15); min-width:240px; z-index:1000; padding:16px;">
     <h4 style="margin:0 0 8px 0; font-size:1rem; color:#23406e;">Carrito</h4>
@@ -558,23 +558,13 @@
                 searchInput.placeholder = 'Buscar Productos';
                 return;
             }
-            // Generar el HTML de los productos
             productsContainer.innerHTML = categoryData.items
                 .map((product, idx) => createProductCard(product, categoryName, idx))
                 .join('');
-            
-            // Actualizar placeholder de búsqueda
             searchInput.placeholder = categoryData.placeholder;
-
-            // Actualizar estilo 'selected' de la barra lateral
-            sidebarLinks.forEach(link => {
-                link.classList.remove('selected');
-            });
-            // Añade la clase 'selected' al enlace que coincida con la categoría cargada
+            sidebarLinks.forEach(link => link.classList.remove('selected'));
             const selectedLink = document.querySelector(`.category-link[data-category="${categoryName}"]`);
-            if (selectedLink) {
-                selectedLink.classList.add('selected');
-            }
+            if (selectedLink) selectedLink.classList.add('selected');
         }
 
         // 3. EVENT LISTENERS: Escuchar clics en la barra lateral
@@ -602,21 +592,6 @@ Object.keys(allCategories).forEach(cat => {
 });
 
 const cart = [];
-
-// Modifica la función para crear la tarjeta de producto
-function createProductCard(product, categoryName, productIndex) {
-    const imageUrl = product.imageUrl.startsWith("C:/") ? "../../img/" + imageUrl.split("/").pop() : product.imageUrl;
-    return `
-        <div class="product-card">
-            <img src="${imageUrl}" alt="${product.name}" 
-                 onerror="this.onerror=null;this.src='https://placehold.co/210x170/4a6fa5/ffffff?text=${encodeURIComponent(product.name)}';">
-            <p>${product.name}</p>
-            <span class="price">${product.price}</span>
-            <button class="btn-cart" onclick="addToCart('${categoryName}', ${productIndex})">Agregar al carrito</button>
-            <div class="stock-text" id="stock-${categoryName}-${productIndex}">Cantidad disponible: ${product.stock}</div>
-        </div>
-    `;
-}
 
 // Función para agregar al carrito y actualizar stock
 function addToCart(categoryName, productIndex) {
@@ -676,16 +651,24 @@ document.getElementById('cart-btn').addEventListener('click', function(e) {
     dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
 });
 
-// Cierra el carrito si se hace clic fuera, excepto si el clic es en el botón de eliminar
+// Cierra el carrito si se hace clic fuera
 document.addEventListener('click', function(e) {
     const cartBtn = document.getElementById('cart-btn');
     const cartDropdown = document.getElementById('cart-dropdown');
-    // Si el clic es en el botón de eliminar o su imagen, no cerrar el carrito
+    // Si el clic es en el botón del carrito o dentro del dropdown, no cerrar el carrito
+    if (cartBtn.contains(e.target) || cartDropdown.contains(e.target)) {
+        return;
+    }
+    // Si el clic es en el botón de eliminar del carrito, no cerrar el carrito
     if (
-        cartBtn.contains(e.target) ||
-        cartDropdown.contains(e.target) ||
-        (e.target.closest('button') && e.target.closest('button').onclick && e.target.closest('button').onclick.toString().includes('removeFromCart'))
+        e.target.closest('button') &&
+        e.target.closest('button').onclick &&
+        e.target.closest('button').onclick.toString().includes('removeFromCart')
     ) {
+        return;
+    }
+    // Si el clic es en un enlace de categoría, no cerrar el carrito ni bloquear el evento
+    if (e.target.closest('.category-link')) {
         return;
     }
     cartDropdown.style.display = 'none';
