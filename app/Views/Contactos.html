@@ -2,116 +2,151 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>TechZone - Contactanos</title>
+  <title>TechZone - Contacto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <style>
     body {
-      margin: 0;
       font-family: 'Poppins', sans-serif;
-      margin: 0;
       background: linear-gradient(to right, #0d47a1, #1976d2);
       color: white;
+      margin: 0;
+      padding: 0;
     }
 
     .navbar {
       background-color: white;
     }
 
-    .navbar-nav .nav-link {
+.navbar-nav .nav-link,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:active,
+.navbar-nav .nav-link:visited,
+.navbar-nav .nav-link.show,
+.navbar-nav .nav-link.active {
+  color: #0d47a1 !important;
+  font-weight: 700 !important;
+}
+    .navbar-nav .nav-link:hover,
+    .dropdown-menu .dropdown-item:hover {
       color: #0d47a1 !important;
-      font-weight: bold;
-    }
-
-    .container-main {
-      display: flex;
-      padding: 30px;
-      gap: 30px;
-    }
-
-    .contact-box {
-      background-color: white;
-      color: #0d47a1;
-      padding: 20px;
-      border-radius: 10px;
-      width: 300px;
-      height: fit-content;
-    }
-
-    .contact-box h5 {
-      margin-bottom: 20px;
-    }
-
-    .contact-box p {
-      margin: 5px 0;
-    }
-
-    .logo {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .logo img {
-      width: 60px;
-    }
-
-    .form-box {
-      background-color: white;
-      color: #0d47a1;
-      flex-grow: 1;
-      border-radius: 10px;
-      padding: 20px;
-    }
-
-    .form-box h4 {
-      margin-bottom: 20px;
-    }
-
-    .form-control {
-      margin-bottom: 15px;
-    }
-
-    .form-check {
-      margin-bottom: 20px;
+      background-color: transparent !important;
     }
 
     .btn-primary {
       background-color: #0d47a1;
       border: none;
+      color: white;
     }
 
     .btn-primary:hover {
       background-color: #1565c0;
     }
+
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: flex-start;
+      padding: 30px;
+    }
+
+    .contact-info {
+      background-color: white;
+      color: #0d47a1;
+      border-radius: 12px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    .contact-info h4 {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      margin: 6px 0;
+      font-size: 15px;
+    }
+
+    .contact-info .logo {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .contact-info img {
+      display: block;
+      margin: 0 auto 10px;
+      width: 100px;
+      height: auto;
+    }
+
+    .contact-form {
+      background-color: white;
+      color: #0d47a1;
+      border-radius: 12px;
+      padding: 30px;
+      flex: 1;
+      min-width: 320px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    .contact-form h4 {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      font-weight: 600;
+    }
+
+    .form-check-label {
+      font-size: 14px;
+    }
+    .navbar-brand {
+  color: #0d47a1 !important;
+  font-weight: 700 !important;
+}
   </style>
 </head>
+    <link rel="icon" type="image/png" href="C:\xampp\htdocs\img\1b9769ff-fd90-4254-aba1-8309de38a88d.jpeg">
 <body>
 
-  <!-- Barra de navegación Bootstrap -->
-<nav class="navbar navbar-expand-lg bg-white shadow-sm">
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg shadow-sm">
   <div class="container-fluid">
-    <a class="navbar-brand fw-bold text-primary" href="Cliente.html">TechZone</a>
+    <a class="navbar-brand fw-bold" href="Cliente.html">TechZone</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="Cliente.html">Inicio</a></li>
         <li class="nav-item"><a class="nav-link" href="CatalogoCompleto.html">Ofertas</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="CatalogoCompleto.html" role="button" data-bs-toggle="dropdown">Categorías</a>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categorías</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="CatalogoCompleto.html">Inventario en stock</a></li>
-            <li><a class="dropdown-item" href="CatalogoCompleto.html">Fuera de stock</a></li>
+            <li><a class="dropdown-item" href="CatalogoCompleto.html">Smartwatch</a></li>
+            <li><a class="dropdown-item" href="CatalogoCompleto.html">Laptops</a></li>
+            <li><a class="dropdown-item" href="CatalogoCompleto.html">Teléfonos</a></li>
+            <li><a class="dropdown-item" href="CatalogoCompleto.html">TVs</a></li>
+            <li><a class="dropdown-item" href="CatalogoCompleto.html">Bocinas</a></li>
+            <li><a class="dropdown-item" href="CatalogoCompleto.html">Audífonos</a></li>
+            <li><a class="dropdown-item" href="CatalogoCompleto.html">Tablets</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Clientes</a></li>
+            <li><a class="dropdown-item" href="Contactos.html">¿No encuentras lo que necesitas? Contáctanos</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link" href="Configuracion.html">Contáctanos</a></li>
+        <li class="nav-item"><a class="nav-link" href="Contactos.html">Contactos</a></li>
         <li class="nav-item"><a class="nav-link" href="Perfil.html">Perfil</a></li>
         <li class="nav-item"><a class="nav-link" href="Configuracion.html">Configuración</a></li>
       </ul>
-   <!-- Sección derecha: búsqueda + perfil -->
+
       <div class="d-flex align-items-center gap-2">
         <input class="form-control rounded-pill" type="search" placeholder="Buscar" aria-label="Buscar">
         <button class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
@@ -122,61 +157,84 @@
   </div>
 </nav>
 
-  <!-- Contenido principal -->
-  <div class="container-main">
-    <!-- Contacto -->
-    <div class="contact-box">
-      <h5>COMUNÍCATE CON NOSOTROS</h5>
-      <p><strong>Teléfono fijo:</strong> +502 2456-7890</p>
-      <p><strong>WhatsApp:</strong> +502 5125-4567</p>
-      <p><strong>Facebook:</strong> TechZoneGT</p>
-      <p><strong>Instagram:</strong> @techzone.gt</p>
-      <p><strong>Telegram:</strong> t.me/TechZoneGT</p>
-      <div class="logo">
-        <img src="C:\xampp\htdocs\img\1b9769ff-fd90-4254-aba1-8309de38a88d.jpeg" alt="Logo">
-        <p><strong>TECH ZONE</strong><br>TECHNOLOGY STORE</p>
-      </div>
-    </div>
+<!-- Sección de contacto -->
+<div class="contact-wrapper">
 
-    <!-- Formulario -->
-    <div class="form-box">
-      <h4>¿Tienes alguna consulta?</h4>
-      <form>
-        <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" class="form-control" required>
+  <!-- Cuadro izquierdo -->
+  <div class="contact-info">
+    <h4>COMUNÍCATE CON NOSOTROS</h4>
+    <p><strong>Teléfono fijo:</strong> +502-2456-7890</p>
+    <p><strong>WhatsApp:</strong> +502-1234-6547</p>
+    <p><strong>Facebook:</strong> TechZoneGT</p>
+    <p><strong>Instagram:</strong> @techzone.gt</p>
+    <p><strong>Telegram:</strong> t.me/TechZoneGT</p>
+    <p><strong>Twitter:</strong> @TechZoneGT</p>
 
-        <label for="correo">Correo electrónico</label>
-        <input type="email" id="correo" class="form-control" required>
-
-        <label for="telefono">Teléfono (opcional)</label>
-        <input type="tel" id="telefono" class="form-control">
-
-        <label for="tipo">Tipo de consulta</label>
-        <select id="tipo" class="form-control" required>
-          <option value="">Selecciona una opción</option>
-          <option>Información de productos</option>
-          <option>Problemas con mi pedido</option>
-          <option>Garantías y devoluciones</option>
-          <option>Otro</option>
-        </select>
-
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" class="form-control" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
-
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="terminos" required>
-          <label class="form-check-label" for="terminos">
-            Acepto los términos y condiciones de TechZone
-          </label>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-      </form>
-    </div>
+  <img src="C:\xampp\htdocs\img\1b9769ff-fd90-4254-aba1-8309de38a88d.jpeg" alt="TechZone Logo" style="width: 100px; height: auto; margin-bottom: 10px;">
+  <div class="logo" style="font-size: 18px; line-height: 1.2;">
+    <div style="font-weight: bold;">TECH ZONE</div>
+    <div style="font-weight: normal;">TECHNOLOGY STORE</div>
   </div>
+</div>
 
-</body>
-</html>
+<!-- Cuadro derecho -->
+<div class="contact-form">
+  <h4>¿Tienes alguna consulta?</h4>
+  <form id="formularioContacto">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre completo</label>
+      <input type="text" class="form-control" id="nombre" required>
+    </div>
 
+    <div class="mb-3">
+      <label for="correo" class="form-label">Correo electrónico</label>
+      <input type="email" class="form-control" id="correo" required>
+    </div>
 
+    <div class="mb-3">
+      <label for="tipo" class="form-label">Tipo de consulta</label>
+      <select class="form-select" id="tipo" required>
+        <option value="">Selecciona una opción</option>
+        <option value="producto">Consulta sobre producto</option>
+        <option value="pedido">Estado de pedido</option>
+        <option value="soporte">Soporte técnico</option>
+        <option value="otro">Otro</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="mensaje" class="form-label">Mensaje</label>
+      <textarea class="form-control" id="mensaje" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
+    </div>
+
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" id="terminos" required>
+      <label class="form-check-label" for="terminos" style="font-size: 16px;">
+        Acepto los términos y condiciones de TechZone
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Enviar mensaje</button>
+  </form>
+
+  <!-- Mensaje de confirmación -->
+  <div id="mensajeConfirmacion" class="mt-3 text-success fw-semibold" style="display: none;">
+     Mensaje enviado correctamente
+  </div>
+</div>
+
+<!-- Script para mostrar mensaje y reiniciar página -->
+<script>
+  document.getElementById('formularioContacto').addEventListener('submit', function(e) {
+    e.preventDefault(); // Evita recargar inmediatamente
+    document.getElementById('mensajeConfirmacion').style.display = 'block';
+    this.reset(); // Limpia el formulario
+
+    // Reinicia la página después de 5 segundos
+    setTimeout(function() {
+      location.reload();
+    }, 2000);
+  });
+</script>
+<html>
 

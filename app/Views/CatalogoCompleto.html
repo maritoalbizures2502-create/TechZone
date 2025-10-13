@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Dinámica - Categorías</title>
-
-    <!-- Enlace a Bootstrap Icons para los iconos de categoría -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TechZone -Catálogo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <style>
         /* PALETA DE COLORES:
             - Azul Oscuro: #23406e (Encabezado/Texto principal)
@@ -258,8 +255,11 @@
             color: #e3f2fd;
             font-weight: 500;
         }
+
+        
     </style>
 </head>
+    <link rel="icon" type="image/png" href="C:\xampp\htdocs\img\1b9769ff-fd90-4254-aba1-8309de38a88d.jpeg">
 <body>
     <header>
         <div style="display:flex; align-items:center; gap:15px;">
@@ -269,31 +269,47 @@
                 <i class="bi bi-arrow-left"></i>
             </button>
             <div class="search-box">
-                <input type="text" id="search-input" placeholder="Buscar Productos">
+                <input type="text" id="search-input" placeholder="Buscar Productos" />
                 <i class="bi bi-search"></i>
             </div>
         </div>
         <div style="position: relative;">
   <button id="cart-btn" class="btn rounded-circle d-flex align-items-center justify-content-center"
     style="width: 40px; height: 40px; background-color: #fff; border: 3px solid #1976d2; box-sizing: border-box; border-radius: 50%;">
-    <img src="C:\xampp\htdocs\img\3144456.png" alt="Carrito" style="width: 24px; height: 25px;">
+    <img src="C:\xampp\htdocs\img\3144456.png" alt="Carrito" style="width: 24px; height: 25px;" />
   </button>
-  <div id="cart-dropdown" style="display:none; position:absolute; right:0; top:50px; background:#fff; border-radius:50px; box-shadow:0 2px 8px rgba(0,0,0,0.15); min-width:240px; z-index:1000; padding:16px;">
-    <h4 style="margin:0 0 8px 0; font-size:1rem; color:#23406e;">Carrito</h4>
-    <ul id="cart-list" style="list-style:none; padding:0; margin:0; color:#23406e;"></ul>
-    <div id="cart-empty" style="color:#888; font-size:0.95rem;">El carrito está vacío.</div>
+  <div
+    id="cart-dropdown"
+    style="
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 50px;
+      background: #fff;
+      border-radius: 50px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      min-width: 240px;
+      z-index: 1000;
+      padding: 16px;
+      border-radius: 8px;
+    "
+  >
+    <h4 style="margin: 0 0 8px 0; font-size: 1rem; color: #23406e;">Carrito</h4>
+    <ul
+      id="cart-list"
+      style="list-style: none; padding: 0; margin: 0; color: #23406e"
+    ></ul>
+    <div id="cart-empty" style="color: #888; font-size: 0.95rem">
+      El carrito está vacío.
+    </div>
   </div>
-</div>
-</div>
-</div>
-</nav>
         </div>
     </header>
-    
+
     <div class="container">
         <div class="sidebar" id="sidebar">
             <h2>Categorías</h2>
-            
+
             <!-- ENLACES DE NAVEGACIÓN con categorías originales -->
             <a href="#" class="category-link selected" data-category="Smart Watch">
                 <span class="category-content">
@@ -344,204 +360,206 @@
                 </span>
                 <i class="bi bi-chevron-right arrow-icon"></i>
             </a>
-            
         </div>
-    
-        <!-- Contenedor vacío donde JS insertará los productos -->
-        <div class="products" id="products-container">
-            <!-- Contenido cargado por JavaScript -->
-        </div>
+
+        <div class="products" id="products-container"></div>
     </div>
 
     <script>
         // === BASE DE DATOS DE PRODUCTOS ===
-        // NOTA IMPORTANTE: Todas las rutas de imagen deben ser RELATIVAS (ej: "img/archivo.webp").
-        // Asegúrate de que los archivos estén en la carpeta 'img/' de tu XAMPP (htdocs/img/).
+        // NOTA IMPORTANTE: Las rutas de imagen deben ser relativas
         const allCategories = {
-            "Smart Watch": { 
+            "Smart Watch": {
                 placeholder: "Buscar Smart Watches",
                 items: [
-                    { 
-                        name: "Smartwatch Deportivo X-Pro", 
-                        price: "Q1,599.00", 
+                    {
+                        name: "Smartwatch Deportivo X-Pro",
+                        price: "Q1,599.00",
                         imageUrl: "img/smartwatch1.webp",
-                        stock: 27
+                        stock: 27,
                     },
-                    { 
-                        name: "Xiaomi Mi Watch Lite", 
-                        price: "Q850.00", 
+                    {
+                        name: "Xiaomi Mi Watch Lite",
+                        price: "Q850.00",
                         imageUrl: "img/watch2.webp",
-                        stock: 15
+                        stock: 15,
                     },
-                    { 
-                        name: "Apple Watch SE (2nd Gen)", 
-                        price: "Q3,999.00", 
+                    {
+                        name: "Apple Watch SE (2nd Gen)",
+                        price: "Q3,999.00",
                         imageUrl: "img/swatch3.jpg",
-                        stock: 8
-                    }
-                ]
+                        stock: 8,
+                    },
+                ],
             },
             "Laptops": {
                 placeholder: "Buscar Laptops",
                 items: [
-                    { 
-                        name: "Laptop Ultrabook Core i5", 
-                        price: "Q6,500.00", 
-                        imageUrl: "C:/xampp/htdocs/img/hero_static__c9sislzzicq6_large.png",
-                        stock: 10
-                    },
-                    { 
-                        name: "MacBook Air M2", 
-                        price: "Q11,999.00", 
-                        imageUrl: "C:/xampp/htdocs/img/laptop3.webp",
-                        stock: 5
-                    },
-                    { 
-                        name: "Chromebook 14 Pulgadas", 
-                        price: "Q2,800.00", 
-                        imageUrl: "C:/xampp/htdocs/img/laptop2.jpg",
-                        stock: 33
-                    }
-                ]
-            },
-            "Teléfonos": { 
-                placeholder: "Buscar Teléfonos",
-                items: [
-                    { 
-                        name: "Samsung Galaxy S24 Ultra", 
-                        price: "Q14,000.00", 
-                        imageUrl: "img/phone1.webp",
-                        stock: 3
-                    },
-                    { 
-                        name: "Samsung Galaxy A33 5G", 
-                        price: "Q11,200.00", 
-                        imageUrl: "img/phone2.webp",
-                        stock: 7
+                    {
+                        name: "Laptop Ultrabook Core i5",
+                        price: "Q6,500.00",
+                        imageUrl:
+                            "C:/xampp/htdocs/img/hero_static__c9sislzzicq6_large.png",
+                        stock: 10,
                     },
                     {
-                        name: "iPhone 15 Pro Max", 
-                        price: "Q17,500.00", 
-                        imageUrl: "C:/xampp/htdocs/img/iphone15promax.png",
-                        stock: 2
+                        name: "MacBook Air M2",
+                        price: "Q11,999.00",
+                        imageUrl: "C:/xampp/htdocs/img/laptop3.webp",
+                        stock: 5,
                     },
-                    { 
-                        name: "iPhone 14 Pro Max", 
-                        price: "Q7,900.00", 
-                        imageUrl: "C:/xampp/htdocs/img/phone3.avif",
-                        stock: 4
+                    {
+                        name: "Chromebook 14 Pulgadas",
+                        price: "Q2,800.00",
+                        imageUrl: "C:/xampp/htdocs/img/laptop2.jpg",
+                        stock: 33,
                     },
-                ]
+                ],
             },
-            "TVs": {
+            "Teléfonos": {
+                placeholder: "Buscar Teléfonos",
+                items: [
+                    {
+                        name: "Samsung Galaxy S24 Ultra",
+                        price: "Q14,000.00",
+                        imageUrl: "img/phone1.webp",
+                        stock: 3,
+                    },
+                    {
+                        name: "Samsung Galaxy A33 5G",
+                        price: "Q11,200.00",
+                        imageUrl: "img/phone2.webp",
+                        stock: 7,
+                    },
+                    {
+                        name: "iPhone 15 Pro Max",
+                        price: "Q17,500.00",
+                        imageUrl: "C:/xampp/htdocs/img/iphone15promax.png",
+                        stock: 2,
+                    },
+                    {
+                        name: "iPhone 14 Pro Max",
+                        price: "Q7,900.00",
+                        imageUrl: "C:/xampp/htdocs/img/phone3.avif",
+                        stock: 4,
+                    },
+                ],
+            },
+            TVs: {
                 placeholder: "Buscar TVs",
                 items: [
-                    { 
-                        name: "Smart TV 55\" 4K UHD", 
-                        price: "Q4,199.00", 
+                    {
+                        name: 'Smart TV 55" 4K UHD',
+                        price: "Q4,199.00",
                         imageUrl: "C:/xampp/htdocs/img/tv1.webp",
-                        stock: 6
+                        stock: 6,
                     },
-                    { 
-                        name: "OLED TV 65\" 120Hz", 
-                        price: "Q18,500.00", 
+                    {
+                        name: 'OLED TV 65" 120Hz',
+                        price: "Q18,500.00",
                         imageUrl: "C:/xampp/htdocs/img/tv2.webp",
-                        stock: 1
+                        stock: 1,
                     },
-                    { 
-                        name: "TV Portátil 24\" HD", 
-                        price: "Q1,500.00", 
+                    {
+                        name: 'TV Portátil 24" HD',
+                        price: "Q1,500.00",
                         imageUrl: "C:/xampp/htdocs/img/tv3.jpg",
-                        stock: 14
-                    }
-                ]
+                        stock: 14,
+                    },
+                ],
             },
-            "Bocinas": {
+            Bocinas: {
                 placeholder: "Buscar Bocinas",
                 items: [
-                    { 
-                        name: "Bocina Bluetooth JBL Flip 6", 
-                        price: "Q1,199.00", 
+                    {
+                        name: "Bocina Bluetooth JBL Flip 6",
+                        price: "Q1,199.00",
                         imageUrl: "C:/xampp/htdocs/img/bocina1.avif",
-                        stock: 20
+                        stock: 20,
                     },
-                    { 
-                        name: "Sistema de Sonido 2.1 con Subwoofer", 
-                        price: "Q1,850.00", 
+                    {
+                        name: "Sistema de Sonido 2.1 con Subwoofer",
+                        price: "Q1,850.00",
                         imageUrl: "C:/xampp/htdocs/img/bocina2.jpg",
-                        stock: 5
+                        stock: 5,
                     },
-                    { 
-                        name: "Altavoz Inteligente Google Home", 
-                        price: "Q650.00", 
+                    {
+                        name: "Altavoz Inteligente Google Home",
+                        price: "Q650.00",
                         imageUrl: "C:/xampp/htdocs/img/bocina3.jpg",
-                        stock: 24
-                    }
-                ]
+                        stock: 24,
+                    },
+                ],
             },
             "Auriculares/Audífonos": {
                 placeholder: "Buscar Audífonos",
                 items: [
-                    { 
-                        name: "AirPods Pro (2nd Gen)", 
-                        price: "Q2,499.00", 
+                    {
+                        name: "AirPods Pro (2nd Gen)",
+                        price: "Q2,499.00",
                         imageUrl: "C:/xampp/htdocs/img/auri2.webp",
-                        stock: 8
+                        stock: 8,
                     },
-                    { 
-                        name: "Audífonos Inalámbricos Sony WH-1000XM5", 
-                        price: "Q3,799.00", 
+                    {
+                        name: "Audífonos Inalámbricos Sony WH-1000XM5",
+                        price: "Q3,799.00",
                         imageUrl: "C:/xampp/htdocs/img/auri1.jpg",
-                        stock: 4
+                        stock: 4,
                     },
-                    { 
-                        name: "Auriculares Gamer con Micrófono", 
-                        price: "Q750.00", 
+                    {
+                        name: "Auriculares Gamer con Micrófono",
+                        price: "Q750.00",
                         imageUrl: "C:/xampp/htdocs/img/auri3.webp",
-                        stock: 15
-                    }
-                ]
+                        stock: 15,
+                    },
+                ],
             },
-            "Tablets": {
+            Tablets: {
                 placeholder: "Buscar Tablets",
                 items: [
-                    { 
-                        name: "iPad Air (5th Gen)", 
-                        price: "Q8,999.00", 
+                    {
+                        name: "iPad Air (5th Gen)",
+                        price: "Q8,999.00",
                         imageUrl: "C:/xampp/htdocs/img/tab1.webp",
-                        stock: 10
+                        stock: 10,
                     },
-                    { 
-                        name: "Samsung Galaxy Tab S9", 
-                        price: "Q10,500.00", 
+                    {
+                        name: "Samsung Galaxy Tab S9",
+                        price: "Q10,500.00",
                         imageUrl: "C:/xampp/htdocs/img/tab3.jpg",
-                        stock: 5
+                        stock: 5,
                     },
-                    { 
-                        name: "Tablet Amazon Fire 10", 
-                        price: "Q1,599.00", 
+                    {
+                        name: "Tablet Amazon Fire 10",
+                        price: "Q1,599.00",
                         imageUrl: "C:/xampp/htdocs/img/tab2.jpg",
-                        stock: 15
-                    }
-                ]
-            }
+                        stock: 15,
+                    },
+                ],
+            },
         };
 
-        const productsContainer = document.getElementById('products-container');
-        const searchInput = document.getElementById('search-input');
-        const sidebarLinks = document.querySelectorAll('.category-link');
-        
-        // La categoría por defecto para iniciar ahora es 'Smart Watch'
-        const defaultCategory = 'Smart Watch'; 
+        const productsContainer = document.getElementById("products-container");
+        const searchInput = document.getElementById("search-input");
+        const sidebarLinks = document.querySelectorAll(".category-link");
+        const cart = [];
+        const originalStock = {};
+        Object.keys(allCategories).forEach((cat) => {
+            allCategories[cat].items.forEach((prod, idx) => {
+                if (!originalStock[cat]) originalStock[cat] = {};
+                originalStock[cat][idx] = prod.stock;
+            });
+        });
 
-        // 1. FUNCIÓN: Genera el HTML de una tarjeta de producto
+        // Cargar categoría
         function createProductCard(product, categoryIndex, productIndex) {
             const imageUrl = product.imageUrl;
             return `
                 <div class="product-card" data-category-index="${categoryIndex}" data-product-index="${productIndex}">
-                    <!-- Si la imagen no carga, se usa un placeholder con texto -->
-                    <img src="${imageUrl}" alt="${product.name}" 
-                         onerror="this.onerror=null;this.src='https://placehold.co/210x170/4a6fa5/ffffff?text=${encodeURIComponent(product.name)}';">
+                    <img src="${imageUrl}" alt="${product.name}"
+                        onerror="this.onerror=null;this.src='https://placehold.co/210x170/4a6fa5/ffffff?text=${encodeURIComponent(
+                            product.name
+                        )}';" />
                     <p>${product.name}</p>
                     <span class="price">${product.price}</span>
                     <button class="btn-cart" onclick="addToCart('${categoryIndex}', ${productIndex})">Agregar al carrito</button>
@@ -550,158 +568,267 @@
             `;
         }
 
-        // 2. FUNCIÓN: Carga los productos de una categoría y actualiza el diseño
         function loadCategory(categoryName) {
             const categoryData = allCategories[categoryName];
             if (!categoryData) {
-                productsContainer.innerHTML = '<h2>Error: Categoría no definida.</h2>';
-                searchInput.placeholder = 'Buscar Productos';
+                productsContainer.innerHTML = "<h2>Error: Categoría no definida.</h2>";
+                searchInput.placeholder = "Buscar Productos";
                 return;
             }
             productsContainer.innerHTML = categoryData.items
                 .map((product, idx) => createProductCard(product, categoryName, idx))
-                .join('');
+                .join("");
             searchInput.placeholder = categoryData.placeholder;
-            sidebarLinks.forEach(link => link.classList.remove('selected'));
+            sidebarLinks.forEach((link) => link.classList.remove("selected"));
             const selectedLink = document.querySelector(`.category-link[data-category="${categoryName}"]`);
-            if (selectedLink) selectedLink.classList.add('selected');
+            if (selectedLink) selectedLink.classList.add("selected");
         }
 
-        // 3. EVENT LISTENERS: Escuchar clics en la barra lateral
-        sidebarLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault(); // Evitar navegación
-                const targetLink = e.target.closest('a.category-link');
+        sidebarLinks.forEach((link) => {
+            link.addEventListener("click", (e) => {
+                e.preventDefault();
+                const targetLink = e.target.closest("a.category-link");
                 if (targetLink) {
-                    const category = targetLink.dataset.category;
-                    loadCategory(category);
+                    loadCategory(targetLink.dataset.category);
                 }
             });
         });
 
-        // 4. INICIALIZACIÓN: Cargar la categoría por defecto inmediatamente al inicio del script.
-        loadCategory(defaultCategory);
+        loadCategory("Smart Watch");
 
-        // Guarda el stock original para poder reiniciar
-const originalStock = {};
-Object.keys(allCategories).forEach(cat => {
-    allCategories[cat].items.forEach((prod, idx) => {
-        if (!originalStock[cat]) originalStock[cat] = {};
-        originalStock[cat][idx] = prod.stock;
+ // Agregar al carrito
+    function addToCart(categoryName, productIndex) {
+        const product = allCategories[categoryName].items[productIndex];
+        if (product.stock > 0) {
+            product.stock--;
+            document.getElementById(`stock-${categoryName}-${productIndex}`).textContent =
+                `Cantidad disponible: ${product.stock}`;
+            cart.push({ name: product.name, price: product.price, category: categoryName, index: productIndex });
+            updateCartDropdown();
+        }
+    }
+
+    // Actualizar carrito
+    function updateCartDropdown() {
+        const cartList = document.getElementById("cart-list");
+        const cartEmpty = document.getElementById("cart-empty");
+        cartList.innerHTML = "";
+
+        if (cart.length === 0) {
+            cartEmpty.style.display = "block";
+        } else {
+            cartEmpty.style.display = "none";
+            let total = 0;
+
+            cart.forEach((item, i) => {
+                const li = document.createElement("li");
+                li.style.display = "flex";
+                li.style.alignItems = "center";
+                li.style.justifyContent = "space-between";
+                li.style.marginBottom = "8px";
+
+                const priceNumber = parseFloat(item.price.replace(/[^\d.,]/g, "").replace(/,/g, ""));
+                total += priceNumber;
+
+                li.innerHTML = `
+                    <span>${item.name} - ${item.price}</span>
+                    <button class="remove-cart-btn" 
+                     data-category="${item.category}" 
+                    data-index="${item.index}" 
+                    style="background:#e53935; border:none; border-radius:8px; padding:4px 8px; margin-left:10px; cursor:pointer;">
+                    <img src="C:/xampp/htdocs/img/1017530.png" alt="Eliminar" style="width:18px; height:18px;">
+                    </button>
+                `;
+                cartList.appendChild(li);
+            });
+
+            const totalLi = document.createElement("li");
+            totalLi.style.marginTop = "12px";
+            totalLi.style.fontWeight = "bold";
+            totalLi.style.color = "#1976d2";
+            totalLi.textContent = `Total Q${total.toLocaleString("es-GT")}`;
+            cartList.appendChild(totalLi);
+        }
+
+        addPayButton();
+    }
+
+    // Delegación para eliminar producto
+    document.getElementById("cart-list").addEventListener("click", (e) => {
+        const btn = e.target.closest(".remove-cart-btn");
+        if (btn) {
+            const idx = parseInt(btn.getAttribute("data-index"));
+            if (!isNaN(idx)) {
+                removeFromCart(idx);
+            }
+        }
     });
-});
-
-const cart = [];
-
-// Función para agregar al carrito y actualizar stock
-function addToCart(categoryName, productIndex) {
-    const product = allCategories[categoryName].items[productIndex];
-    if (product.stock > 0) {
-        product.stock--;
-        document.getElementById(`stock-${categoryName}-${productIndex}`).textContent =
-            `Cantidad disponible: ${product.stock}`;
-        cart.push({ name: product.name, price: product.price, category: categoryName, index: productIndex });
+// Eliminar producto por categoría e índice
+function removeFromCartByReference(category, index) {
+    const itemIndex = cart.findIndex(
+        (item) => item.category === category && item.index === index
+    );
+    if (itemIndex !== -1) {
+        const product = allCategories[category].items[index];
+        product.stock++;
+        cart.splice(itemIndex, 1);
         updateCartDropdown();
+        loadCategory(document.querySelector(".category-link.selected").dataset.category);
     }
 }
 
-// Actualiza el contenido del carrito desplegable
-function updateCartDropdown() {
-    const cartList = document.getElementById('cart-list');
-    const cartEmpty = document.getElementById('cart-empty');
-    cartList.innerHTML = '';
-    if (cart.length === 0) {
-        cartEmpty.style.display = 'block';
-    } else {
-        cartEmpty.style.display = 'none';
-        let total = 0;
-        cart.forEach((item, i) => {
-            const li = document.createElement('li');
-            li.style.display = "flex";
-            li.style.alignItems = "center";
-            li.style.justifyContent = "space-between";
-            li.style.marginBottom = "8px";
-            // Extrae el número del precio (Q14,000 -> 14000)
-            const priceNumber = parseFloat(item.price.replace(/[^\d.,]/g, '').replace(/,/g, ''));
-            total += priceNumber;
-            li.innerHTML = `
-                <span>${item.name} - ${item.price}</span>
-                <button class="remove-cart-btn" data-index="${i}" style="background:#e53935; border:none; border-radius:8px; padding:4px 8px; margin-left:10px; cursor:pointer;">
-                    <img src="../../img/1017530.png" alt="Eliminar" style="width:18px; height:18px;">
-                </button>
-            `;
-            cartList.appendChild(li);
-        });
-        // Agrega el total al final
-        const totalLi = document.createElement('li');
-        totalLi.style.marginTop = '12px';
-        totalLi.style.fontWeight = 'bold';
-        totalLi.style.color = '#1976d2';
-        totalLi.textContent = `Total Q${total.toLocaleString('es-GT')}`;
-        cartList.appendChild(totalLi);
+    // Eliminar producto y restaurar stock
+    function removeFromCart(index) {
+        const item = cart[index];
+        if (item) {
+            const product = allCategories[item.category].items[item.index];
+            product.stock++;
+            document.getElementById(`stock-${item.category}-${item.index}`).textContent =
+                `Cantidad disponible: ${product.stock}`;
+            cart.splice(index, 1);
+            updateCartDropdown();
+        }
+    }
 
-        // Agrega el event listener para los botones de eliminar
-        const removeBtns = cartList.querySelectorAll('.remove-cart-btn');
-        removeBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const idx = parseInt(this.getAttribute('data-index'));
-                removeFromCart(idx);
+    // Mostrar/ocultar carrito
+    document.getElementById("cart-btn").addEventListener("click", (e) => {
+        e.stopPropagation();
+        const dropdown = document.getElementById("cart-dropdown");
+        dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+    });
+
+    // BLOQUE MODIFICADO: evitar cierre al eliminar
+    document.addEventListener("click", (e) => {
+        const cartBtn = document.getElementById("cart-btn");
+        const cartDropdown = document.getElementById("cart-dropdown");
+
+        if (
+            cartBtn.contains(e.target) ||
+            cartDropdown.contains(e.target) ||
+            e.target.closest(".remove-cart-btn") ||
+            e.target.closest(".remove-cart-btn img")
+        ) return;
+
+        if (e.target.closest(".category-link")) return;
+
+        cartDropdown.style.display = "none";
+    });
+
+    // Modal HTML agregado al body
+    const paymentModalHTML = `
+<div id="payment-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); 
+    align-items:center; justify-content:center; z-index:2000;">
+  <div style="background:#fff; border-radius:16px; padding:24px; width:320px; box-shadow:0 6px 20px rgba(0,0,0,0.3); position:relative;">
+    <h3 style="color:#23406e; margin-top:0;">Pago de Compra</h3>
+    <form id="payment-form">
+      <label style="color:#23406e;">Nombre en la tarjeta</label>
+      <input type="text" id="card-name" required style="width:100%; padding:8px; margin:6px 0 12px 0; border-radius:8px; border:1px solid #ccc;">
+      
+      <label style="color:#23406e;">Número de tarjeta</label>
+      <input type="text" id="card-number" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" required 
+        style="width:100%; padding:8px; margin:6px 0 12px 0; border-radius:8px; border:1px solid #ccc; font-family: monospace;">
+      
+      <div style="display:flex; gap:12px;">
+        <div style="flex:1;">
+          <label style="color:#23406e;">Expiración (MM/AA)</label>
+          <input type="text" id="card-expiry" maxlength="4" placeholder="MM/AA" required 
+            style="width:90%; padding:8px; margin:6px 0 12px 0; border-radius:8px; border:1px solid #ccc; font-family: monospace;">
+        </div>
+        <div style="flex:1;">
+          <label style="color:#23406e;">CVV</label>
+          <input type="password" id="card-cvv" maxlength="3" required
+            style="width:100%; padding:8px; margin:6px 0 12px 0; border-radius:8px; border:1px solid #ccc; font-family: monospace;">
+        </div>
+      </div>
+      
+      <button type="submit" style="background:#007bff; color:#fff; border:none; border-radius:8px; padding:10px; width:100%; cursor:pointer; font-weight:bold;">
+        Pagar
+      </button>
+      <button type="button" id="payment-cancel" style="margin-top:8px; background:#888; color:#fff; border:none; border-radius:8px; padding:10px; width:100%; cursor:pointer;">
+        Cancelar
+      </button>
+    </form>
+  </div>
+</div>
+`;
+
+    // Agregar modal al body
+    document.body.insertAdjacentHTML("beforeend", paymentModalHTML);
+
+    // Añadir botón pagar
+    function addPayButton() {
+        const cartDropdown = document.getElementById("cart-dropdown");
+        if (!document.getElementById("pay-button")) {
+            const payBtn = document.createElement("button");
+            payBtn.id = "pay-button";
+            payBtn.textContent = "Pagar";
+            payBtn.style =
+                "margin-top:12px; width:100%; padding:10px; border:none; border-radius:8px; background:#007bff; color:#fff; font-weight:bold; cursor:pointer;";
+            payBtn.addEventListener("click", () => {
+                if (cart.length === 0) {
+                    alert("El carrito está vacío.");
+                    return;
+                }
+                document.getElementById("payment-modal").style.display = "flex";
+            });
+            cartDropdown.appendChild(payBtn);
+        }
+    }
+
+    // Modificar updateCartDropdown para incluir botón pagar
+    const updateCartDropdownOriginal = updateCartDropdown;
+    updateCartDropdown = () => {
+        updateCartDropdownOriginal();
+        addPayButton();
+    };
+
+    // Cancelar pago
+  document.getElementById("cart-list").addEventListener("click", (e) => {
+    const btn = e.target.closest(".remove-cart-btn");
+    if (btn) {
+        const cat = btn.getAttribute("data-category");
+        const idx = parseInt(btn.getAttribute("data-index"));
+        if (cat && !isNaN(idx)) {
+            removeFromCartByReference(cat, idx);
+        }
+    }
+});
+
+    // Enviar formulario pago
+    document.getElementById("payment-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("¡Pago realizado con éxito! Gracias por su compra.");
+
+        // Vaciar carrito
+        cart.length = 0;
+
+        // Restaurar stock original
+        Object.keys(originalStock).forEach((cat) => {
+            allCategories[cat].items.forEach((prod, idx) => {
+                prod.stock = originalStock[cat][idx];
+                const stockElem = document.getElementById(`stock-${cat}-${idx}`);
+                if (stockElem) stockElem.textContent = `Cantidad disponible: ${prod.stock}`;
             });
         });
-    }
-}
 
-// Elimina producto del carrito y reinicia el stock
-function removeFromCart(cartIndex) {
-            // Agrega el total al final
-            const totalLi = document.createElement('li');
-            totalLi.style.marginTop = '12px';
-            totalLi.style.fontWeight = 'bold';
-            totalLi.style.color = '#1976d2';
-            totalLi.textContent = `Total Q${total.toLocaleString('es-GT')}`;
-            cartList.appendChild(totalLi);
-    const item = cart[cartIndex];
-    if (item) {
-        // Reinicia el stock en la base de datos y en la vista
-        allCategories[item.category].items[item.index].stock = originalStock[item.category][item.index];
-        document.getElementById(`stock-${item.category}-${item.index}`).textContent =
-            `Cantidad disponible: ${originalStock[item.category][item.index]}`;
-        cart.splice(cartIndex, 1);
         updateCartDropdown();
+        loadCategory(document.querySelector(".category-link.selected").dataset.category);
+        document.getElementById("payment-modal").style.display = "none";
+
+        e.target.reset();
+    });
+    function removeFromCartByReference(category, index) {
+    const itemIndex = cart.findIndex(
+        (item) => item.category === category && item.index === index
+    );
+    if (itemIndex !== -1) {
+        const product = allCategories[category].items[index];
+        product.stock++;
+        cart.splice(itemIndex, 1);
+        updateCartDropdown();
+        loadCategory(document.querySelector(".category-link.selected").dataset.category);
     }
 }
-
-// Mostrar/ocultar el carrito al hacer clic en el botón
-document.getElementById('cart-btn').addEventListener('click', function(e) {
-    e.stopPropagation();
-    const dropdown = document.getElementById('cart-dropdown');
-    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-});
-
-// Cierra el carrito si se hace clic fuera
-document.addEventListener('click', function(e) {
-    const cartBtn = document.getElementById('cart-btn');
-    const cartDropdown = document.getElementById('cart-dropdown');
-    // Si el clic es en el botón del carrito o dentro del dropdown, no cerrar el carrito
-    if (cartBtn.contains(e.target) || cartDropdown.contains(e.target)) {
-        return;
-    }
-    // Si el clic es en el botón de eliminar del carrito, no cerrar el carrito
-    if (
-        e.target.closest('button') &&
-        e.target.closest('button').onclick &&
-        e.target.closest('button').onclick.toString().includes('removeFromCart')
-    ) {
-        return;
-    }
-    // Si el clic es en un enlace de categoría, no cerrar el carrito ni bloquear el evento
-    if (e.target.closest('.category-link')) {
-        return;
-    }
-    cartDropdown.style.display = 'none';
-    //Hola mundo :)
-});
-    </script>
+</script>
 </body>
 </html>

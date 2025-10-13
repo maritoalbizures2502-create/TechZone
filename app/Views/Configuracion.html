@@ -236,7 +236,7 @@
             background-color: var(--btn-primary-light);
             border-color: var(--btn-primary-light);
             color: white;
-            font-weight: 600;
+            font-weight: 800;
             transition: background-color 0.3s, border-color 0.3s;
         }
         
@@ -390,48 +390,66 @@ body.dark-mode .btn.btn-primary.rounded-circle:hover {
 /* Las imágenes se mantienen igual, no se ocultan ni se invierten */
 body.dark-mode .btn.rounded-circle img,
 body.dark-mode .btn.btn-primary.rounded-circle img {
-    filter: none !important;
+    filter: none !important;  
+}
+.navbar {
+  padding-left: 0 !important;
+}
+.navbar .container-fluid {
+  padding-left: 0 !important;
+}
+.navbar-brand {
+  margin-left: 12px !important;
+  padding-left: 0 !important;
+  display: inline-block;
+}
+.navbar-nav .nav-link {
+  font-size: 1.05rem; /* Puedes subirlo a 1.2rem si quieres más presencia */
 }
     </style>
 </head>
+    <link rel="icon" type="image/png" href="C:\xampp\htdocs\img\1b9769ff-fd90-4254-aba1-8309de38a88d.jpeg">
 <body>
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
-        <div class="container-fluid">
-            <a class="navbar-brand fw-bold text-primary" href="Cliente.html">TechZone</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="Cliente.html">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="CatalogoCompleto.html">Ofertas</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categorías</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="CatalogoCompleto.html">Smartwatch</a></li>
-                            <li><a class="dropdown-item" href="CatalogoCompleto.html">Celulares</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="Contactos.html">¿No encuentras lo que necesitas? Contáctanos</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="Contactos.html">Contactos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Perfil.html">Perfil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Configuracion.html">Configuración</a></li>
-                </ul>
-                <div class="d-flex align-items-center gap-2">
-                    <input class="form-control rounded-pill" type="search" placeholder="Buscar" aria-label="Buscar">
-                    <button class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                      <img src="C:\xampp\htdocs\img\12225881.png" style = width:33px; height:33px; border-radius:50% alt="Perfil">
-                    </button>
-                    <button class="btn rounded-circle d-flex align-items-center justify-content-center"
-                            style="width: 40px; height: 40px; background-color: white; border: 3px solid #0d7eef;">
-                         <img src="C:\xampp\htdocs\img\3144456.png" style = width:28px; height:28px; border-radius:50% alt="Carrito">
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-    
+    <!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="Cliente.html">TechZone</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="Cliente.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="CatalogoCompleto.html">Ofertas</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categorías</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="CatalogoCompleto.html">Smartwatch</a></li>
+            <li><a class="dropdown-item" href="CatalogoCompleto.html">Laptops</a></li>
+            <li><a class="dropdown-item" href="CatalogoCompleto.html">Teléfonos</a></li>
+            <li><a class="dropdown-item" href="CatalogoCompleto.html">TVs</a></li>
+            <li><a class="dropdown-item" href="CatalogoCompleto.html">Bocinas</a></li>
+            <li><a class="dropdown-item" href="CatalogoCompleto.html">Audífonos</a></li>
+            <li><a class="dropdown-item" href="CatalogoCompleto.html">Tablets</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="Contactos.html">¿No encuentras lo que necesitas? Contáctanos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="Contactos.html">Contactos</a></li>
+        <li class="nav-item"><a class="nav-link" href="Perfil.html">Perfil</a></li>
+        <li class="nav-item"><a class="nav-link" href="Configuracion.html">Configuración</a></li>
+      </ul>
+
+      <div class="d-flex align-items-center gap-2">
+        <input class="form-control rounded-pill" type="search" placeholder="Buscar" aria-label="Buscar">
+        <button class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+          <img src="C:\xampp\htdocs\img\12225881.png" alt="Perfil" style="width: 33px; height: 33px; border-radius: 50%;">
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
     <div class="content-area">
         <div class="settings-card">
             <h4>Configuración de usuario</h4>
